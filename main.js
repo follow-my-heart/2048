@@ -55,7 +55,7 @@
                             return this;
                         }
                         this.each(function(i, item) {
-                            item.style[attr] = css;
+                            this.style[attr] = css;
                         });
                     }
                     return this;
@@ -63,13 +63,10 @@
                     return "";
             }
         },
-
-            //添加一个类
         addClass: function(ClassName) {
             this.each(function(i, item) {
                 if (!item.className.match(new RegExp("(\\s|^)" + ClassName + "(\\s|$)", "g"))) {
-                //item的classname属性中没有匹配到classname
-                    item.className += " " + ClassName;//classname加空格
+                    item.className += " " + ClassName;
                 }
             });
             //为了满足连贯操作
@@ -87,8 +84,7 @@
         //遍历器
         each: function(callback) {
             for (var index = 0; index < this.length; index++) {
-                if (false === callback.call(this[index], index, this[index])) break;//调用callback并将其执行时的this替换为第一个参数，后面的所有参数作为参数
-
+                if (false === callback.call(this[index], index, this[index])) break;
             }
         },
         append: function(str) {
@@ -102,7 +98,7 @@
                 }
             } else {
                 //如果是一个query 对象并且nodetype表明是一个html的情况下
-                if (str.isQuery && str[0].nodeType && (str[0].nodeType != 11)) {//str.isQuery 判断是不是预定义的对象
+                if (str.isQuery && str[0].nodeType && (str[0].nodeType != 11)) {
                     for (i = 0; i < this.length; i++) {
                         this[i].appendChild(str[0]);
                     }
@@ -163,6 +159,7 @@
     };
     //这里将会是未来全局变量的声明区域
 
+
     //这里将会是未来操作方法的声明区域
     // 0.0.1:设定一个可能存在的grid系统
     function grid(size) {
@@ -184,8 +181,6 @@
         }
         return rows;
     };
-<<<<<<< HEAD
-=======
     grid.prototype.load = function() {
         var str = JSON.parse(localStorage.getItem('grid'));
         for (var index = str.length - 1; index >= 0; index--) {
@@ -201,7 +196,6 @@
         });
         localStorage.setItem('grid', JSON.stringify(str));
     };
->>>>>>> origin/master
     //检测是否存在可合并项目
     grid.prototype.haveMergeableCell = function() {
         var flag = false;
@@ -570,26 +564,15 @@
         //游戏计分板
         this.score = 0;
         if (!localStorage.getItem("score")) {
-<<<<<<< HEAD
-             localStorage.setItem("score", 0);
-        }
-        this.grid.init();
-        this.bestDisplay.innerHTML = localStorage.getItem("score");
-        this.scoreDisplay.innerHTML = this.score;
-=======
             localStorage.setItem("score", 0);
         }
         this.grid.init();
         this.bestDisplay.innerHTML = localStorage.getItem("score");
->>>>>>> origin/master
     };
     //0.0.2:设定一些可能存在的结构
     //系统的启动
     GameManage.prototype.start = function() {
         this.init();
-<<<<<<< HEAD
-        this.grid.randomAdd();
-=======
 
         if (localStorage.getItem("grid")) {
             this.grid.load();
@@ -601,16 +584,12 @@
 
         this.scoreDisplay.innerHTML = this.score;
 
->>>>>>> origin/master
         var _dom = this.grid.randerDom();
         this.tile[0].innerHTML = "";
         this.tile.append(_dom);
     };
     GameManage.prototype.restart = function() {
-<<<<<<< HEAD
-=======
         localStorage.removeItem("grid");
->>>>>>> origin/master
         this.start();
         this.controlBox.css({ 'display': 'none' });
     };
@@ -645,12 +624,9 @@
             //增加分数
             this.score += this.grid.deltaScore;
             this.scoreDisplay.innerHTML = this.score;
-<<<<<<< HEAD
-=======
             //保存进度
             this.grid.save();
             localStorage.setItem('nowscore', this.score);
->>>>>>> origin/master
         }
         //判断游戏是否结束
         if (this.grid.isGridEmpty() && !this.grid.haveMergeableCell()) {
@@ -663,22 +639,13 @@
             this.controlBox.css({ 'display': 'block' });
             this.message.innerHTML = '游戏胜利';
             this.status = 2;
-<<<<<<< HEAD
-=======
         }
         if (localStorage.getItem("score")) {
             if (this.score > localStorage.getItem("score")) {
                 localStorage.setItem("score", this.score);
                 this.bestDisplay.innerHTML = localStorage.getItem("score");
             }
->>>>>>> origin/master
         }
-        if (localStorage.getItem("score")) {
-             if (this.score > localStorage.getItem("score")) {
-                 localStorage.setItem("score", this.score);
-                 this.bestDisplay.innerHTML = localStorage.getItem("score");
-             }
-         }
         //绘制dom
         this.tile[0].innerHTML = "";
         var _dom = this.grid.randerDom();
@@ -697,8 +664,4 @@
 
 var game = new fake2048('content', 4);
 game.start();
-<<<<<<< HEAD
-$('.start-button')[0].addEventListener('click', game.start.bind(game));
-=======
 $('.start-button')[0].addEventListener('click', game.restart.bind(game));
->>>>>>> origin/master

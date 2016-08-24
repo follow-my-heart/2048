@@ -185,7 +185,6 @@ div {
     border-radius: 3px;
     font-weight: bold;
     transition-property: top, left;
-<<<<<<< HEAD
     transition-duration: 100ms;
     transition-timing-function: ease-in-out;
     -moz-transition-property: top, left; /* Firefox 4 */
@@ -197,19 +196,6 @@ div {
     -moz-transition-timing-function: ease-in-out; /* Firefox 4 */
     -webkit-transition-timing-function: ease-in-out; /* Safari 和 Chrome */
     -o-transition-timing-function: ease-in-out; /* Opera */
-=======
-	transition-duration: 100ms;
-	transition-timing-function: ease-in-out;
-	-moz-transition-property: top, left; /* Firefox 4 */
-	-moz-transition-duration: 100ms; /* Firefox 4 */
-	-webkit-transition-property: top, left; /* Safari and Chrome */
-	-webkit-transition-duration: 100ms; /* Safari and Chrome */
-	-o-transition-property: top, left; /* Opera */
-	-o-transition-duration: 100ms; /* Opera */
-	-moz-transition-timing-function: ease-in-out; /* Firefox 4 */
-	-webkit-transition-timing-function: ease-in-out; /* Safari 和 Chrome */
-	-o-transition-timing-function: ease-in-out; /* Opera */
->>>>>>> origin/master
 }
 
 .content .tile-new {
